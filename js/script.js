@@ -149,6 +149,10 @@ $submit.addEventListener("click", (e) => {
   $submit.disable = true;
 
   createTodo($title.value, $content.value, $date.value);
+
+  document.getElementById("inp").value = "";
+  document.getElementById("inp2").value = "";
+  document.getElementById("inp3").value = "";
 });
 
 $signOut.addEventListener("click", (e) => {
