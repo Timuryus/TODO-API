@@ -14,6 +14,11 @@ function getLogin(url) {
       "Content-type": "application/json",
     },
   })
+    .then((res) => {
+      if (res.status < 400) {
+        return res;
+      }
+    })
     .then((res) => res.json())
     .then((res) => {
       localStorage.setItem("accessToken", res.accessToken);
@@ -54,11 +59,8 @@ window.addEventListener("DOMContentLoaded", () => {
   if (isActivated) {
     window.open("./index.html", "_self");
   }
-});
-
-window.addEventListener("DOMContentLoaded", () => {
   const accessToken = localStorage.getItem("accessToken");
-  if (!accessToken) {
-    window.open("./register.html", "_self");
+  if (accessToken === "undefined") {
+    localStorage.clear();
   }
 });
